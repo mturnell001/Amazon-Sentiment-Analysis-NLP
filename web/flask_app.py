@@ -3,6 +3,7 @@ import joblib
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
+import os
 
 def analyze(review = ''):
     #key for our data labels
@@ -12,18 +13,18 @@ def analyze(review = ''):
     review_iter = [review]
 
     #vectorize for tf-idf methods
-    vctrzr = joblib.load('/resources/bin/fitted_vectorizer.sav')
+    vctrzr = joblib.load(os.path.join('static', 'bin', 'fitted_vectorizer.sav'))
     review_vctr = vctrzr.transform(review_iter)
 
     #make predictions
 
     #logistic regression
-    lr_model = joblib.load('/resources/bin/top_lr_model.sav')
+    lr_model = joblib.load(os.path.join('static', 'bin', 'top_lr_model.sav'))
     lr_label = lr_model.predict(review_vctr)[0]
     lr_prediction = sentiment_labels[lr_label]
 
     #support vector machine
-    svm_model = joblib.load('resources/bin/top_svm_model.sav')
+    svm_model = joblib.load(os.path.join('static', 'bin', 'top_svm_model.sav'))
     svm_label = svm_model.predict(review_vctr)[0]
     svm_prediction = sentiment_labels[svm_label]
 
@@ -36,7 +37,7 @@ def analyze(review = ''):
 
     #add the model type and the prediction here
 
-    predictions = {'Review Text':review,
+    predictions = {'_text':review,
                    'Logistic Regression':lr_prediction,
                    'Support Vector Machine':svm_prediction}
     
