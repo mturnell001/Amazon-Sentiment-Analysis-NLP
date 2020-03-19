@@ -51,7 +51,7 @@ def index():
     """
     This renders the home page/base route
     """
-    return render(template('index.html'))
+    return render_template('index.html')
 
 @app.route('/api/<review>')
 def api(review = ''):
