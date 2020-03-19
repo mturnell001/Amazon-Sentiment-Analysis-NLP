@@ -12,20 +12,20 @@ def analyze(review = ''):
     review_iter = [review]
 
     #vectorize for tf-idf methods
-    vctrzr = joblib.load('fitted_vectorizer.sav')
+    vctrzr = joblib.load('/resources/bin/fitted_vectorizer.sav')
     review_vctr = vctrzr.transform(review_iter)
 
     #make predictions
 
     #logistic regression
-    lr_model = joblib.load('top_lr_model.sav')
-    lr_label = lr_model.predict(review_vctr)
-    lr_prediction = sentiment_labels[lr_label[0]]
+    lr_model = joblib.load('/resources/bin/top_lr_model.sav')
+    lr_label = lr_model.predict(review_vctr)[0]
+    lr_prediction = sentiment_labels[lr_label]
 
     #support vector machine
-    svm_model = joblib.load('top_svm_model.sav')
-    svm_label = svm_model.predict(review_vctr)
-    svm_prediction = sentiment_labels[svm_label[0]]
+    svm_model = joblib.load('resources/bin/top_svm_model.sav')
+    svm_label = svm_model.predict(review_vctr)[0]
+    svm_prediction = sentiment_labels[svm_label]
 
     #TODO: ADD MODELS HERE!!
 
@@ -44,6 +44,8 @@ def analyze(review = ''):
     response.headers.add('Access-Control-Allow-Orogin', '*')
     return response
 
+app = Flask(__name__)
+
 @app.route('/')
 def index():
     """
@@ -59,3 +61,6 @@ def api(review = ''):
     """
     results = analyze(review)
     return results
+
+if __name__ == '__main__':
+    app.run(debug=True)
