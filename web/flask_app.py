@@ -15,6 +15,10 @@ def analyze(review = ''):
     #vectorize for tf-idf methods
     vctrzr = joblib.load(os.path.join('static', 'bin', 'fitted_vectorizer.sav'))
     review_vctr = vctrzr.transform(review_iter)
+    preprocessor = vctrzr.build_preprocessor()
+    tokenizer = vctrzr.build_tokenizer()
+    pre_tokens = preprocessor(review)
+    tokens = [' ' + token for token in list(set(tokenizer(pre_tokens)))]
 
     #make predictions
 
@@ -37,12 +41,12 @@ def analyze(review = ''):
 
     #add the model type and the prediction here
 
-    predictions = {'_text':review,
+    predictions = {'Tokens':tokens, #jsonify will alpha sort this dict by key
                    'Logistic Regression':lr_prediction,
                    'Support Vector Machine':svm_prediction}
     
     response = jsonify(predictions)
-    response.headers.add('Access-Control-Allow-Orogin', '*')
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 app = Flask(__name__)
