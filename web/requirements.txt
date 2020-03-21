@@ -62,7 +62,7 @@ plac==0.9.6
 preshed==3.0.2
 prometheus-client==0.7.1
 prompt-toolkit==3.0.4
-protobuf==3.11.4
+#protobuf==3.11.4
 pycparser==2.20
 Pygments==2.6.1
 pygpu==0.7.6
