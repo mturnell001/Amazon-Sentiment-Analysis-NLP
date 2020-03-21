@@ -15,7 +15,7 @@ cycler==0.10.0
 cymem==2.0.3
 decorator==4.4.2
 defusedxml==0.6.0
-en-core-web-lg==2.2.5
+en-core-web-lg
 entrypoints==0.3
 Flask==1.1.1
 gast==0.2.2
