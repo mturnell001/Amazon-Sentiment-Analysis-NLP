@@ -89,7 +89,7 @@ seaborn==0.10.0
 Send2Trash==1.5.0
 six==1.14.0
 spacy==2.2.3
-srsly==1.0.0
+#srsly==1.0.0
 statsmodels==0.11.1
 tensorboard==1.15.0
 tensorflow==1.15.0
