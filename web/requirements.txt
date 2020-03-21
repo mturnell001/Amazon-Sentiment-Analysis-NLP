@@ -52,7 +52,7 @@ murmurhash==1.0.0
 #nbformat==5.0.4
 #notebook==6.0.3
 numpy==1.18.1
-opt-einsum==0+untagged.53.g6ab433b.dirty
+#opt-einsum==0+untagged.53.g6ab433b.dirty
 pandas==1.0.3
 pandocfilters==1.4.2
 parso==0.6.2
@@ -62,10 +62,10 @@ plac==0.9.6
 preshed==3.0.2
 prometheus-client==0.7.1
 prompt-toolkit==3.0.4
-protobuf==3.11.4
+#protobuf==3.11.4
 pycparser==2.20
 Pygments==2.6.1
-pygpu==0.7.6
+#pygpu==0.7.6
 pyOpenSSL==19.1.0
 pyparsing==2.4.6
 PyQt5==5.12.3
@@ -76,7 +76,7 @@ pyrsistent==0.15.7
 PySocks==1.7.1
 python-dateutil==2.8.1
 pytz==2019.3
-pywin32==227
+#pywin32==227
 pywinpty==0.5.7
 PyYAML==5.3.1
 pyzmq==19.0.0
@@ -89,7 +89,7 @@ seaborn==0.10.0
 Send2Trash==1.5.0
 six==1.14.0
 spacy==2.2.3
-srsly==1.0.0
+#srsly==1.0.0
 statsmodels==0.11.1
 tensorboard==1.15.0
 tensorflow==1.15.0
