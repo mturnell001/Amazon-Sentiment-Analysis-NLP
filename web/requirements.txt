@@ -47,10 +47,10 @@ matplotlib==3.2.1
 mistune==0.8.4
 #mkl-service
 murmurhash==1.0.0
-nb-conda-kernels==2.2.3
-nbconvert==5.6.1
-nbformat==5.0.4
-notebook==6.0.3
+#nb-conda-kernels==2.2.3
+#nbconvert==5.6.1
+#nbformat==5.0.4
+#notebook==6.0.3
 numpy==1.18.1
 opt-einsum==0+untagged.53.g6ab433b.dirty
 pandas==1.0.3
