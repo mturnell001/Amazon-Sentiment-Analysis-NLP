@@ -85,7 +85,7 @@ def analyze(review = ''):
                    'Logistic Regression':lr_prediction,
                    'Support Vector Machine':svm_prediction,
                    'LSTM (Untuned)': f"{lstm_prediction} with {round(lstm_confidence*100,2)}% confidence",
-                   'Tuned DNN' : f"{tuned_prediction} with {round(tuned_confidence*100,2)}% confidence",
+                   'Keras DNN (Tuned)' : f"{tuned_prediction} with {round(tuned_confidence*100,2)}% confidence",
                    'Keras DNN (Untuned)' : f"{untuned_prediction} with {round(untuned_confidence*100,2)}% confidence"}
     
     response = jsonify(predictions)
