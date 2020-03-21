@@ -59,7 +59,6 @@ def analyze(review = ''):
     lstm_tokens = np.array(lstm_tokens).reshape(-1,77,300)
     #lstm_tokens.shape should be (1,77,300)
 
-
     DNN_tokens = nlp(review).vector
     DNN_tokens = DNN_tokens.reshape(1,-1)
     #DNN_tokens.shape will be (1,300) here
