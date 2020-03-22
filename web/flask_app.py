@@ -32,6 +32,7 @@ def analyze(review = ''):
     lr_model = joblib.load(os.path.join('static', 'bin', 'top_lr_model.sav'))
     lr_label = lr_model.predict(review_vctr)[0]
     lr_prediction = sentiment_labels[lr_label]
+    lr_confidence = lr_model.predict_proba(review_vctr).max()
 
     #support vector machine
     svm_model = joblib.load(os.path.join('static', 'bin', 'top_svm_model.sav'))
@@ -58,7 +59,6 @@ def analyze(review = ''):
     lstm_tokens = np.array(lstm_tokens).reshape(-1,77,300)
     #lstm_tokens.shape should be (1,77,300)
 
-
     DNN_tokens = nlp(review).vector
     DNN_tokens = DNN_tokens.reshape(1,-1)
     #DNN_tokens.shape will be (1,300) here
@@ -82,10 +82,10 @@ def analyze(review = ''):
     untuned_prediction = sentiment_labels[untuned_label + 1]
 
     predictions = {'Tokens':tokens, #jsonify will alpha sort this dict by key
-                   'Logistic Regression':lr_prediction,
+                   'Logistic Regression':f"{lr_prediction} with {round(lr_confidence*100,2)}% confidence",
                    'Support Vector Machine':svm_prediction,
                    'LSTM (Untuned)': f"{lstm_prediction} with {round(lstm_confidence*100,2)}% confidence",
-                   'Keras DNN (Tuned)' : f"{tuned_prediction} with {round(tuned_confidence*100,2)}% confidence",
+                   'Hyperas Tuned DNN' : f"{tuned_prediction} with {round(tuned_confidence*100,2)}% confidence",
                    'Keras DNN (Untuned)' : f"{untuned_prediction} with {round(untuned_confidence*100,2)}% confidence"}
     
     response = jsonify(predictions)
